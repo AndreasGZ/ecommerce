@@ -1,0 +1,31 @@
+.sign-in{
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+
+  @media(max-width: 950px){
+    width: 50%;
+    padding: 0 10px;
+  }
+
+  @media(max-width: 630px){
+    width: 100%;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+  .title{
+    margin: 10px 0;
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width: 950px){
+      flex-direction: column;
+      height: 110px;
+      width: 100%;
+    }
+  }
+}
