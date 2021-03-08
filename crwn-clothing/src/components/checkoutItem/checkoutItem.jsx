@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {clearItemFromCart} from "../../redux/cart/cartActions";
 import {addItem, removeItem} from "../../redux/cart/cartActions";
 
+
 const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
   const {name, price, quantity, imageUrl} = cartItem;
   return (

@@ -10,6 +10,14 @@
   position: relative;
   overflow: hidden;
 
+  @media(max-width: 790px){
+    min-width: 40%;
+  }
+
+  @media(max-width: 460px){
+    min-width: 60%;
+  }
+
   &:hover{
     cursor: pointer;
 
@@ -25,6 +33,10 @@
 
   &.large{
     height: 380px;
+
+    @media(max-width: 790px){
+      height: 240px;
+    }
   }
 
   &:first-child {
