@@ -9,8 +9,13 @@
 
   .items {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+
+    .collection-item{
+      margin-left: 20px;
+      margin-right: 20px;
+    }
 
     @media (max-width: 500px){
       flex-direction: column;
