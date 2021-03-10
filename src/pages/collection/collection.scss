@@ -5,17 +5,13 @@
   .title {
     font-size: 38px;
     margin: 0 auto 30px;
+    width: 100%;
   }
 
   .items {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-
-    .collection-item{
-      margin-left: 20px;
-      margin-right: 20px;
-    }
 
     @media (max-width: 500px){
       flex-direction: column;

@@ -10,13 +10,15 @@ const selectCollections = createSelector(
 
 export const selectShopCollections = createSelector(
   [selectShop],
-  shop => Object.values(shop.collections)
+  shop =>
+    shop.collections ? Object.values(shop.collections) : []
 )
 
 // memoize -> wenn sich die values nicht ändern, muss nicht gererendered werden
 export const selectCollection = memoize(collectionUrlParam =>
   createSelector(
     [selectCollections],
-    collections => collections[collectionUrlParam]
+    collections =>
+      collections ? collections[collectionUrlParam] : null
   )
 );

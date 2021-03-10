@@ -3,9 +3,19 @@
   flex-direction: column;
   margin-bottom: 30px;
 
-  .title {
-    font-size: 28px;
+  .title-container{
+    display: block;
     margin-bottom: 25px;
+  }
+
+  .title {
+    display: inline;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .title:hover{
+    opacity: 0.6;
   }
 
   .preview {
