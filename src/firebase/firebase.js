@@ -45,9 +45,9 @@ export const firestore = firebase.firestore();
 // firestore.doc("/name/id/name/id")
 // firestore.collection("/name/id/name")
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({prompt: "select_account"});
-export const signInWithGoogle = () => auth.signInWithPopup(provider)
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({prompt: "select_account"});
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 
 // Man muss das Array einzeln einfügen
 // Wenn Internet ausfällt, dann landetnur ein Teil in der DB
@@ -86,6 +86,16 @@ export const convertCollectionSnapshotToMap = (collections) => {
   } , {});
 
   // console.log(transformedCollection);
+}
+
+export const getCurrentUser = () => {
+  // Wir erhalten userAuth, wenn user existiert, ansonsten null oder error
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject)
+  })
 }
 
 export default firebase;
