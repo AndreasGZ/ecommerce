@@ -1,51 +1,45 @@
-import React from "react";
+import React, {useState} from "react";
 import FormInput from "../form-input/form-input";
 import "./sign-in.scss";
 import CustomButton from "../custom-button/custom-button";
 import {googleSignInStart, emailSignInStart} from "../../redux/user/userActions";
 import {connect} from "react-redux";
 
-class SignIn extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      email: "",
-      password: ""
-    }
-  }
+const SignIn = ({ emailSignInStart, googleSignInStart }) => {
+  const [userCredentials, setCredetials] = useState({
+    email: "",
+    password: ""
+  })
+  const {email, password} = userCredentials;
 
-  handleSubmit = async evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault();
-    const { emailSignInStart } = this.props
-    const {email, password} = this.state;
     emailSignInStart(email, password);
   }
 
-  handleChange = evt => {
+  const handleChange = evt => {
     const { value, name } = evt.target;
     // Das Value wird sofort gerendert
-    this.setState({ [name]: value})
+    setCredetials({ ...userCredentials, [name]: value})
   }
 
-  render(){
-    const { googleSignInStart } = this.props;
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <FormInput
             name="email" type="email"
-            handleChange={this.handleChange}
-            value={this.state.email}
+            handleChange={handleChange}
+            value={email}
             label="email"
             required
           />
           <FormInput
             name="password" type="password"
-            handleChange={this.handleChange}
-            value={this.state.password}
+            handleChange={handleChange}
+            value={password}
             label="password"
             required
           />
@@ -63,7 +57,6 @@ class SignIn extends React.Component {
         </form>
       </div>
     );
-  }
 }
 
 const mapDispatchToProps = dispatch => ({

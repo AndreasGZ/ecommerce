@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Route} from "react-router-dom";
 import CollectionPage from "../collection/collection";
 import {connect} from "react-redux";
@@ -15,15 +15,12 @@ const ShopPage = ({match, location, history}) => {
 */
 
 
-class ShopPage extends React.Component{
-  componentDidMount() {
+const ShopPage = ({fetchCollectionsStart, match}) =>{
+  useEffect(() => {
     // API_Request nicht im constructor benutzen
-    const {fetchCollectionsStart} = this.props;
     fetchCollectionsStart();
-  }
-
-  render(){
-    const {match} = this.props;
+  }, [fetchCollectionsStart]);
+  
     return(
       <div className="shop-page">
         <Route exact path={`${match.path}`}
@@ -34,7 +31,6 @@ class ShopPage extends React.Component{
         />
       </div>
     );
-  }
 }
 
 const mapDispatchToProps = dispatch => ({

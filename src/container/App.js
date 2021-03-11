@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Homepage from "../pages/homepage/homepage";
@@ -27,21 +27,14 @@ import {checkUserSession} from "../redux/user/userActions";
  -> exact=false trifft erst auf '/' -> es wird nur Homepage gerandert
  */
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+const App = ({currentUser, checkUserSession}) => {
+  const unsubscribeFromAuth = null;
 
-  componentDidMount(){
-    const {checkUserSession} = this.props;
+  useEffect(() => {
     checkUserSession();
-  }
+  }, [checkUserSession]);
+  // checkUserSession kann in dem Array eingetragen werden, da es über mapDispatchToProps aufgerufen wird
 
-  componentWillUnmount(){
-    // Subscription zerstören -> unlisten the listener
-    this.unsubscribeFromAuth();
-  }
-
-  render(){
-    const {currentUser} = this.props;
     return (
       <div>
         <Header />
@@ -54,7 +47,6 @@ class App extends React.Component {
         </Switch>
       </div>
     );
-  }
 }
 
 const mapStateToProps = createStructuredSelector({
