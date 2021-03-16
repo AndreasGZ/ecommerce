@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import {Route} from "react-router-dom";
-import CollectionPage from "../collection/collection";
 import {connect} from "react-redux";
 import {fetchCollectionsStart} from "../../redux/shop/shopActions";
 import CollectionsOverviewContainer from "../../components/collectionsOverview/collectionsOverview.container";
@@ -20,7 +19,7 @@ const ShopPage = ({fetchCollectionsStart, match}) =>{
     // API_Request nicht im constructor benutzen
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
-  
+
     return(
       <div className="shop-page">
         <Route exact path={`${match.path}`}

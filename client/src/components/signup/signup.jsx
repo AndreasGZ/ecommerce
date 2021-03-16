@@ -5,8 +5,6 @@ import "./sign-up.scss";
 import {connect} from "react-redux";
 import {signUpStart} from "../../redux/user/userActions";
 
-import {auth, createUserProfileDocument} from "../../firebase/firebase";
-
 const SignUp = ({signUpStart}) => {
   const [userCredentials, setCredetials] = useState({
     displayName: "",

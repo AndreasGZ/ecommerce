@@ -1,4 +1,4 @@
-import {takeEvery, takeLatest, call, put, all} from "redux-saga/effects";
+import {takeLatest, call, put, all} from "redux-saga/effects";
 //Take every listens to every action of a specific type
 //takeLatest führt nur das letzte aus
 // call invokes a Method inside a generator funktion

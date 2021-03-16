@@ -28,8 +28,6 @@ import {checkUserSession} from "../redux/user/userActions";
  */
 
 const App = ({currentUser, checkUserSession}) => {
-  const unsubscribeFromAuth = null;
-
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);

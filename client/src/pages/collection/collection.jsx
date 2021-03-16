@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "./collection.scss";
 import CollectionItem from "../../components/collectionItem/collectionItem";
 import {connect} from "react-redux";
@@ -8,6 +8,8 @@ import {selectCollection} from "../../redux/shop/shopSelectors";
 const CollectionPage = ({collection}) => {
   // CompoenntWillUnmount
   /*
+  import React, {useEffect} from "react";
+
   useEffect(()=>{
     console.log("I am subscribing");
     const unsubscribeFromCollections = firestore
