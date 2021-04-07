@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
-import {Route} from "react-router-dom";
-import {connect} from "react-redux";
-import {fetchCollectionsStart} from "../../redux/shop/shopActions";
+import React, { useEffect } from "react";
+import { Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchCollectionsStart } from "../../redux/shop/shopActions";
 import CollectionsOverviewContainer from "../../components/collectionsOverview/collectionsOverview.container";
 import CollectionPageContainer from "../collection/collection.container";
 
@@ -14,22 +14,22 @@ const ShopPage = ({match, location, history}) => {
 */
 
 
-const ShopPage = ({fetchCollectionsStart, match}) =>{
+const ShopPage = ({ fetchCollectionsStart, match }) => {
   useEffect(() => {
     // API_Request nicht im constructor benutzen
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
 
-    return(
-      <div className="shop-page">
-        <Route exact path={`${match.path}`}
-          component={CollectionsOverviewContainer}
-        />
-        <Route path={`${match.path}/:collectionId`}
+  return (
+    <div className="shop-page">
+      <Route exact path={`${match.path}`}
+        component={CollectionsOverviewContainer}
+      />
+      <Route path={`${match.path}/:collectionId`}
         component={CollectionPageContainer}
-        />
-      </div>
-    );
+      />
+    </div>
+  );
 }
 
 const mapDispatchToProps = dispatch => ({
