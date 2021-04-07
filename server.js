@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 if (process.env.NODE_ENV == "production") {
+  app.use(compression);
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join(__dirname, "client/build")));
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV == "production") {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   })
 }
+
 
 app.listen(port, error => {
   if (error) throw error;
